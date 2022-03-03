@@ -1,0 +1,27 @@
+type Query {
+    customers : [Customers]
+    CustomersByName (name :String) : [Customer]
+}
+
+type Mutation{
+    addCustomer(name : Steing : Customer
+}
+
+type Subscription {
+
+    customerEvents( id: ID ) : Customer
+}
+type Customer{
+    id: ID
+    name : String
+    orders : [Order]
+}
+
+type Order {
+    id : ID
+    customer: ID
+}
+
+enum CustomerEventType {
+    CREATED, UPDATED
+}
