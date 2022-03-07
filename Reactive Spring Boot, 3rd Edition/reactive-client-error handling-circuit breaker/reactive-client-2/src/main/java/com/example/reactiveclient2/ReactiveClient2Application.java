@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import lombok.experimental.var;
 import lombok.extern.log4j.Log4j2;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -14,9 +13,7 @@ import org.springframework.cloud.client.circuitbreaker.ReactiveCircuitBreakerFac
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.event.EventListener;
 import org.springframework.stereotype.Component;
-import org.springframework.web.reactive.function.client.ExchangeFilterFunctions;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.Disposable;
 import reactor.core.publisher.Mono;
 
 @SpringBootApplication
@@ -34,7 +31,6 @@ public class ReactiveClient2Application {
 //				.filter(ExchangeFilterFunctions.basicAuthentication())
                 .build();
     }
-
 }
 
 @Component
@@ -72,7 +68,7 @@ class Client {
 //                .subscribe(gr -> log.info("Mono: " + gr));
         //using circuit breaker
         breaker.run(http,throwable -> Mono.just("EEk"))
-                .subscribe(gr-> log.info("Mono "+gr);
+                .subscribe(gr-> log.info("Mono "+gr));
 
         this.client
                 .get()

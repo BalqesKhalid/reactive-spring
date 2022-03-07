@@ -62,7 +62,7 @@ class GreetingService {
 
 		return Flux
 				.fromStream(Stream.generate(()->greet(request.getName())))
-				.delayElements(Duration.ofSeconds(1))
+				.delayElements(Duration.ofSeconds(1));
 	}
 
 	private GreetingResponse greet(String name) {
